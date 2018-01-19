@@ -1,0 +1,18 @@
+#+TITLE: Number Baseball Game Using R6
+
+
+* Get Started
+
+#+BEGIN_SRC R
+devtools::install_github("kkweon/NumberBaseball")
+
+library(NumberBaseball)
+baseball <- Baseball$new()
+baseball$start()
+#+END_SRC
+
+* Tests
+
+#+BEGIN_SRC R
+devtools::test()
+#+END_SRC
