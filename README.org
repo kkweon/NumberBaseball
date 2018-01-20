@@ -11,6 +11,48 @@ baseball <- Baseball$new()
 baseball$start()
 #+END_SRC
 
+* UML
+
+#+BEGIN_SRC plantuml :file assets/uml.svg :exports results
+  hide circle
+  skinparam defaultFontSize 18
+  skinparam classBackgroundColor transparent
+
+  class Baseball {
+    - n : int
+    - trial : int
+    - clear : bool
+    - answer : AnswerHelper
+    - input : UserInput
+    - checkClear(vector<int>) : bool
+    - printResult() : void
+    + start() : void
+  }
+
+  class AnswerHelper {
+    - answer : vector<int>
+    - printMessage(vector<int>) : void
+    + generateAnswer() : void
+    + checkAnswer(vector<int>) : vector<int>
+  }
+
+  class UserInput {
+    - -
+    - promptVectorClean(int) : int
+    - validate2to9(int) : bool
+    - allValid(vector<int>) : bool
+    - askPrompt(string, bool *fn(int)) : int
+    + askMaxLength() : void
+    + askUserGuess() : vector<int>
+  }
+
+  Baseball *-- AnswerHelper
+  Baseball *-- UserInput
+#+END_SRC
+
+#+RESULTS:
+[[file:assets/uml.svg]]
+
 * Tests
 
 #+BEGIN_SRC R
